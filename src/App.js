@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Topbar from './Topbar/Topbar';
+import Homepage from './Homepage/Homepage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    totalLikes: 0,
+    totalDislikes: 0,
+    numberOfPosts: 0,
+  }
+
+  onLikeIncrement = () => {
+    const updatedVal = this.state.totalLikes + 1;
+    this.setState({totalLikes: updatedVal})
+  }
+
+  onLikeDecrement = () => {
+    const updatedVal = this.state.totalLikes - 1;
+    this.setState({totalLikes: updatedVal})
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Topbar likesCount={this.state.totalLikes} />
+
+        <Homepage onLikeIncrement={this.onLikeIncrement} onLikeDecrement={this.onLikeDecrement} />
+      </div>
+    );
+  }
 }
 
 export default App;
