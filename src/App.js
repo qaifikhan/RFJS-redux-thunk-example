@@ -2,29 +2,24 @@ import React from 'react';
 import Topbar from './Topbar/Topbar';
 import Homepage from './Homepage/Homepage';
 
+import classes from './App.module.css';
+
 class App extends React.Component {
   state = {
     totalLikes: 0,
-    totalDislikes: 0,
-    numberOfPosts: 0,
   }
 
-  onLikeIncrement = () => {
-    const updatedVal = this.state.totalLikes + 1;
-    this.setState({totalLikes: updatedVal})
-  }
-
-  onLikeDecrement = () => {
-    const updatedVal = this.state.totalLikes - 1;
+  updateLikes = (incrementValue) => {
+    const updatedVal = this.state.totalLikes + incrementValue;
     this.setState({totalLikes: updatedVal})
   }
 
   render() {
     return (
-      <div className="App">
+      <div className={classes.App}>
         <Topbar likesCount={this.state.totalLikes} />
 
-        <Homepage onLikeIncrement={this.onLikeIncrement} onLikeDecrement={this.onLikeDecrement} />
+        <Homepage updateLikes={this.updateLikes} />
       </div>
     );
   }

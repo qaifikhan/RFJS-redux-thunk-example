@@ -2,34 +2,13 @@ import React from 'react';
 import classes from './Homepage.module.css';
 
 class Homepage extends React.Component {
-    state = {
-        todoList: [
-            {
-                id: 1,
-                message: 'Buy Apples'
-            },
-            {
-                id: 2,
-                message: 'Buy Apples'
-            },
-            {
-                id: 3,
-                message: 'Buy Apples'
-            },
-        ]
-    }
-
     render() {
         return(
             <div className={classes.MainContainer}>
-                <button onClick={this.props.onLikeIncrement}>Like ++</button>
-                <button onClick={this.props.onLikeDecrement}>Like --</button>
-
-                {
-                    this.state.todoList.map(item => {
-                        return <p key={item.id} className={classes.TodoItem}>{item.message}</p>
-                    })
-                }
+                <section className={classes.First} onClick={() => this.props.updateLikes(1)}>Increment + 1</section>
+                <section className={classes.Second} onClick={() => this.props.updateLikes(20)}>Increment + 20</section>
+                <section className={classes.Third} onClick={() => this.props.updateLikes(-1)}>Decrement - 1</section>
+                <section className={classes.Fourth} onClick={() => this.props.updateLikes(-10)}>Decrement - 10</section>
             </div>
         );
     }
