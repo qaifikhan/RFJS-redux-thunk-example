@@ -7,6 +7,10 @@
     left: 0;
     box-shadow: 0 2px 4px #ccc;
     z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .Topbar > h2 {
